@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EffortLoggerConsoleController">
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -25,7 +25,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#switchtoSEffortLogEditor" text="Effort Log Editor" translateX="25.0" />
+            <Button mnemonicParsing="false" onAction="#switchtoEffortLogEditor" text="Effort Log Editor" translateX="25.0" />
             <Button mnemonicParsing="false" text="Defect Log Console" translateX="15.0" GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" text="Definitions" translateX="35.0" GridPane.columnIndex="2" />
             <Button mnemonicParsing="false" text="Effort and Defect Logs" translateX="5.0" GridPane.columnIndex="3" />
