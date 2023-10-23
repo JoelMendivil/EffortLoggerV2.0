@@ -23,5 +23,25 @@ public class EffortLoggerConsoleController {
 		stage.setScene(scene);
 		stage.show();
 	}
-
+	public void switchtoDefectLogConsole(ActionEvent event) throws IOException {
+		root = FXMLLoader.load(getClass().getResource("DefectLogConsole.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	public void switchtoDefinitions(ActionEvent event) throws IOException {
+		root = FXMLLoader.load(getClass().getResource("Definitions.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	public void switchtoEffortandDefectLogs(ActionEvent event) throws IOException {
+		root = FXMLLoader.load(getClass().getResource("EffortandDefectLogs.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
 }
