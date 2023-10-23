@@ -26,9 +26,9 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#switchtoEffortLogEditor" text="Effort Log Editor" translateX="25.0" />
-            <Button mnemonicParsing="false" text="Defect Log Console" translateX="15.0" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" text="Definitions" translateX="35.0" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" text="Effort and Defect Logs" translateX="5.0" GridPane.columnIndex="3" />
+            <Button mnemonicParsing="false" onAction="#switchtoDefectLogConsole" text="Defect Log Console" translateX="15.0" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#switchtoDefinitions" text="Definitions" translateX="35.0" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#switchtoEffortandDefectLogs" text="Effort and Defect Logs" translateX="5.0" GridPane.columnIndex="3" />
          </children>
       </GridPane>
    </bottom>
