@@ -22,27 +22,4 @@ public class Controller {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
-	public void switchtoSEffortLogEditor(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("EffortLogEditor.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	public void switchtoDefectLogConsole(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("DefectLogConsole.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	public void switchtoDefinitions(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("Definitions.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
 }
