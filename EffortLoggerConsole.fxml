@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,10 +12,12 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EffortLoggerConsoleController">
    <bottom>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane prefHeight="67.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,7 +36,7 @@
       </GridPane>
    </bottom>
    <top>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -44,7 +47,15 @@
             <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -53,7 +64,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="40.0" stroke="BLACK" strokeType="INSIDE" translateX="25.0" translateY="10.0" width="550.0" GridPane.rowIndex="1" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="40.0" stroke="BLACK" strokeType="INSIDE" translateX="10.0" translateY="10.0" width="575.0" GridPane.rowIndex="1" />
             <Label text="Clock is Stopped" translateX="175.0" translateY="-15.0" GridPane.rowIndex="2">
                <font>
                   <Font size="37.0" />
@@ -80,6 +91,47 @@
                   </LinearGradient>
                </textFill>
             </Label>
+            <Text smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Press the &quot;start an activity&quot; button to begin a new activity." translateX="9.0" translateY="6.0" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="181.0" text="Start an activity" translateX="30.0" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2. Select the project, life cycle step, effort category, and deliverable from the following lists" translateX="9.0" translateY="4.0" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Project:" translateX="33.0" translateY="4.0" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+            </Text>
+            <ChoiceBox prefHeight="26.0" prefWidth="265.0" translateX="30.0" translateY="3.0" GridPane.rowIndex="7" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step:" translateX="320.0" translateY="4.0" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+            </Text>
+            <ChoiceBox prefHeight="26.0" prefWidth="247.0" translateX="317.0" translateY="3.0" GridPane.rowIndex="7" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category:" translateX="33.0" translateY="9.0" GridPane.rowIndex="8">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+            </Text>
+            <ChoiceBox prefHeight="26.0" prefWidth="223.0" translateX="30.0" GridPane.rowIndex="9" />
+            <ChoiceBox prefHeight="26.0" prefWidth="317.0" translateX="266.0" GridPane.rowIndex="9" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3. Press the &quot;Stop this Activity&quot; to generate an effort log entry using the attributes above." translateX="9.0" translateY="31.0" GridPane.rowIndex="12">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="170.0" text="Stop this Activity" translateX="30.0" translateY="26.0" GridPane.rowIndex="13" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4. Unless you are done for the day, it is best to perform steps 1 and 2 above before resuming work." translateX="9.0" translateY="19.0" GridPane.rowIndex="14">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+            </Text>
          </children>
       </GridPane>
    </top>
