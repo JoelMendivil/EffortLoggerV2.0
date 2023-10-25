@@ -1,6 +1,6 @@
 package application;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +25,11 @@ public class DefinitionsController implements Initializable{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private Project[] projectArray = new Project[10];
+	
+	//Buffered Reader and Writer for reading/writing files
+	BufferedReader br;
+	BufferedWriter bw;
 	
 	//Create all the tables
 	@FXML private TableView<Project> projectTable;
@@ -36,7 +41,7 @@ public class DefinitionsController implements Initializable{
 	@FXML private TableColumn<Project, String> step2Column;
 	@FXML private TableColumn<Project, String> step3Column;
 	
-	//Initialize all the values within the tables on launch
+	//Initialize all the values within the tables on launch 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		
@@ -49,7 +54,12 @@ public class DefinitionsController implements Initializable{
 
 
 		
-		projectTable.setItems(getProjects());
+		try {
+			projectTable.setItems(loadProjects());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		projectTable.setEditable(true); //Table is now editable
 		
 		//Opens up a text field for the project column when double-clicked on
@@ -61,45 +71,89 @@ public class DefinitionsController implements Initializable{
 	}
 	
 	//Creates a list of projects with values to be initialized to a table
-	public ObservableList<Project> getProjects(){
-		ObservableList<Project> projects = FXCollections.observableArrayList();
-		projects.add(new Project("1", "Business Project", "10", "9", "8"));
-		projects.add(new Project("2", "Development Project", "2", "4", "6"));
-		projects.add(new Project("3", "Project3", "1", "3", "5"));
+	public ObservableList<Project> loadProjects() throws IOException{
 		
+		//List of Projects
+		ObservableList<Project> projects = FXCollections.observableArrayList();
+		
+		//Read from projectFiles.txt
+		br = new BufferedReader(new FileReader("projectFiles.txt"));
+		
+		String line;
+		int i = 0;
+		
+		while ((line = br.readLine()) != null) {
+			String[] params = line.split("\\|");
+			projectArray[i] = new Project(params[0], params[1], params[2], params[3], params[4]);
+			projects.add(projectArray[i]);
+			i++;
+		}
+		
+		br.close();
+				
 		return projects;
 	}
 	
 	//For editing the name column on the project table
-	public void changeProjectNameCellEvent(CellEditEvent editedCell) {
+	public void changeProjectNameCellEvent(CellEditEvent editedCell) throws IOException {
 		Project projectSelected = projectTable.getSelectionModel().getSelectedItem();
 		
 		//Captures the new value typed in the column cell
 		projectSelected.setName(editedCell.getNewValue().toString());
+		
+		//Changes the real project object value for later
+		for (int i = 0; i < projectArray.length; i++) {
+			if (projectArray[i].getName().equals(projectSelected.getName())) {
+				projectArray[i].setName(editedCell.getNewValue().toString());
+			}
+		}
+		saveProjects();
+		
 	}
 	
 	//For editing the step1 column on the project table
-	public void changeProjectStep1CellEvent(CellEditEvent editedCell) {
+	public void changeProjectStep1CellEvent(CellEditEvent editedCell) throws IOException {
 		Project projectSelected = projectTable.getSelectionModel().getSelectedItem();
 		
 		//Captures the new value typed in the column cell
 		projectSelected.setStep1(editedCell.getNewValue().toString());
+		
+		for (int i = 0; i < projectArray.length; i++) {
+			if (projectArray[i].getStep1().equals(projectSelected.getName())) {
+				projectArray[i].setStep1(editedCell.getNewValue().toString());
+			}
+		}
+		saveProjects();
 	}
 	
-	//For editing the step1 column on the project table
-	public void changeProjectStep2CellEvent(CellEditEvent editedCell) {
+	//For editing the step2 column on the project table
+	public void changeProjectStep2CellEvent(CellEditEvent editedCell) throws IOException {
 		Project projectSelected = projectTable.getSelectionModel().getSelectedItem();
 		
 		//Captures the new value typed in the column cell
 		projectSelected.setStep2(editedCell.getNewValue().toString());
+		
+		for (int i = 0; i < projectArray.length; i++) {
+			if (projectArray[i].getStep2().equals(projectSelected.getName())) {
+				projectArray[i].setStep2(editedCell.getNewValue().toString());
+			}
+		}
+		saveProjects();
 	}
 	
-	//For editing the step1 column on the project table
-	public void changeProjectStep3CellEvent(CellEditEvent editedCell) {
+	//For editing the step3 column on the project table
+	public void changeProjectStep3CellEvent(CellEditEvent editedCell) throws IOException {
 		Project projectSelected = projectTable.getSelectionModel().getSelectedItem();
 		
 		//Captures the new value typed in the column cell
 		projectSelected.setStep3(editedCell.getNewValue().toString());
+		
+		for (int i = 0; i < projectArray.length; i++) {
+			if (projectArray[i].getStep3().equals(projectSelected.getName())) {
+				projectArray[i].setStep3(editedCell.getNewValue().toString());
+			}
+		}
+		saveProjects();
 	}
 	
 	//Switches scenes to the EffortLogger Console main page
@@ -109,5 +163,19 @@ public class DefinitionsController implements Initializable{
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+			
+			saveProjects();
 		}
+		
+		//Saves the changes to the projects table to projectFiles.txt
+		public void saveProjects() throws IOException {
+			bw = new BufferedWriter(new FileWriter("projectFiles.txt"));
+			
+					for (int i = 0; i < projectArray.length; i++) {
+						bw.write(projectArray[i].toString());
+					}
+			
+					bw.close();
+		}
+		
 }

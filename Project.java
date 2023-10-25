@@ -16,6 +16,12 @@ public class Project {
 		
 	}
 	
+	public String toString() {
+		String s = this.getNumber() + "|" + this.getName() + "|" + this.getStep1()
+				   + "|" + this.getStep2() + "|" + this.getStep3() + "\n";
+		return s;
+	}
+	
 	public StringProperty nameProperty() {
 		return name;
 	}
@@ -54,24 +60,24 @@ public class Project {
 		this.number = number;
 	}
 
-	public SimpleStringProperty getStep1() {
-		return step1;
+	public String getStep1() {
+		return step1.get();
 	}
 
 	public void setStep1(String step1) {
 		this.step1 = new SimpleStringProperty(step1);
 	}
 
-	public SimpleStringProperty getStep2() {
-		return step2;
+	public String getStep2() {
+		return step2.get();
 	}
 
 	public void setStep2(String step2) {
 		this.step2 = new SimpleStringProperty(step2);
 	}
 
-	public SimpleStringProperty getStep3() {
-		return step3;
+	public String getStep3() {
+		return step3.get();
 	}
 
 	public void setStep3(String step3) {
