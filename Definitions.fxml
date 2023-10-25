@@ -2,10 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#switchToEffortLoggerConsole" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EffortLogEditorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#switchToEffortLoggerConsole" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DefinitionsController">
    <children>
       <Label layoutX="242.0" layoutY="4.0" text="Definitions">
          <font>
@@ -13,5 +15,14 @@
          </font>
       </Label>
       <Button layoutX="359.0" layoutY="472.0" mnemonicParsing="false" onAction="#switchToEffortLoggerConsole" text="Proceed to the Effort Log Console" />
+      <TableView fx:id="projectTable" layoutX="22.0" layoutY="35.0" prefHeight="200.0" prefWidth="591.0">
+        <columns>
+          <TableColumn fx:id="numberColumn" prefWidth="37.0" text="1a." />
+          <TableColumn fx:id="nameColumn" onEditCommit="#changeProjectNameCellEvent" prefWidth="195.0" text="Specity Project Names Here:" />
+            <TableColumn fx:id="step1Column" onEditCommit="#changeProjectStep1CellEvent" prefWidth="35.0" text="1" />
+            <TableColumn fx:id="step2Column" onEditCommit="#changeProjectStep2CellEvent" prefWidth="32.1160888671875" text="2" />
+            <TableColumn fx:id="step3Column" onEditCommit="#changeProjectStep3CellEvent" prefWidth="36.996978759765625" text="3" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
