@@ -58,7 +58,13 @@ public class EffortLoggerConsoleController {
 	@FXML
 	void start(ActionEvent event) throws IOException{//written by sriram
 		ClockLabelRectangle.setFill(Color.GREEN);//changes the clock is stopped label to green 
-		ClockLabel.setText("Clock is Running");//and the text is change to the clock is running  
-												//when the start the activity button is pressed.
+		ClockLabel.setText("Clock is Running");//and the text is changed to the clock is running  
+					//when the start the activity button is pressed.
+	}
+	@FXML
+	void stop(ActionEvent event) throws IOException{
+		ClockLabelRectangle.setFill(Color.RED);//changes the clock is stopped label to red 
+		ClockLabel.setText("Clock is Stopped");//and the text is changed to the clock is stopped  
+		//when the stop the activity button is pressed.
 	}
 }
