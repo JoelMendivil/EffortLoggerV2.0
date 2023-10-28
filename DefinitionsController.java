@@ -48,24 +48,24 @@ public class DefinitionsController implements Initializable{
 	
 	
 	//Creates all the columns in the Project Table
-	@FXML private TableColumn<Project, String> numberColumn ;
-	@FXML private TableColumn<Project, String> nameColumn;
-	@FXML private TableColumn<Project, String> step1Column;
-	@FXML private TableColumn<Project, String> step2Column;
-	@FXML private TableColumn<Project, String> step3Column;
-	@FXML private TableColumn<Project, String> step4Column;
-	@FXML private TableColumn<Project, String> step5Column;
-	@FXML private TableColumn<Project, String> step6Column;
-	@FXML private TableColumn<Project, String> step7Column;
-	@FXML private TableColumn<Project, String> step8Column;
-	@FXML private TableColumn<Project, String> step9Column;
-	@FXML private TableColumn<Project, String> step10Column;
-	@FXML private TableColumn<Project, String> step11Column;
-	@FXML private TableColumn<Project, String> step12Column;
-	@FXML private TableColumn<Project, String> step13Column;
-	@FXML private TableColumn<Project, String> step14Column;
-	@FXML private TableColumn<Project, String> step15Column;
-	@FXML private TableColumn<Project, String> step16Column;
+	@FXML private TableColumn<Project, String> numberColumn = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> nameColumn = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step1Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step2Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step3Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step4Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step5Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step6Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step7Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step8Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step9Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step10Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step11Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step12Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step13Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step14Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step15Column = new TableColumn<Project, String>("");
+	@FXML private TableColumn<Project, String> step16Column = new TableColumn<Project, String>("");
 	
 	//Creates all the columns in the Life Cycle Table
 	@FXML private TableColumn<LifeCycle, String> indexColumn = new TableColumn<LifeCycle, String>("");
@@ -260,9 +260,19 @@ public class DefinitionsController implements Initializable{
 		
 		while ((line = br.readLine()) != null) {
 			String[] params = line.split("\\|");
-			projectArray[i] = new Project(params[0], params[1], params[2], params[3], params[4], params[5], params[6],
-					                      params[7], params[8], params[9], params[10], params[11], params[12], params[13],
-					                      params[14], params[15], params[16], params[17]);
+			
+			String[] newParams = new String[18];
+			
+			for (int j = 0; j < params.length; j++) {
+				newParams[j] = params[j];
+			}
+			for (int j = params.length; j < newParams.length; j++) {
+				newParams[j] = " ";
+			}
+			
+			projectArray[i] = new Project(newParams[0], newParams[1], newParams[2], newParams[3], newParams[4], newParams[5], newParams[6],
+					                      newParams[7], newParams[8], newParams[9], newParams[10], newParams[11], newParams[12], newParams[13],
+					                      newParams[14], newParams[15], newParams[16], newParams[17]);
 			projects.add(projectArray[i]);
 			i++;
 		}
@@ -286,7 +296,15 @@ public class DefinitionsController implements Initializable{
 		
 		while ((line = br.readLine()) != null) {
 			String[] params = line.split("\\|");
-			lifeCycleArray[i] = new LifeCycle(params[0], params[1], params[2], params[3]);
+			String[] newParams = new String[4];
+			
+			for (int j = 0; j < params.length; j++) {
+				newParams[j] = params[j];
+			}
+			for (int j = params.length; j < newParams.length; j++) {
+				newParams[j] = " ";
+			}
+			lifeCycleArray[i] = new LifeCycle(newParams[0], newParams[1], newParams[2], newParams[3]);
 			lifeCycles.add(lifeCycleArray[i]);
 			i++;
 		}
@@ -310,7 +328,15 @@ public class DefinitionsController implements Initializable{
 			
 		while ((line = br.readLine()) != null) {
 			String[] params = line.split("\\|");
-			effortCategoryArray[i] = new EffortCategory(params[0], params[1]);
+			String[] newParams = new String[2];
+			
+			for (int j = 0; j < params.length; j++) {
+				newParams[j] = params[j];
+			}
+			for (int j = params.length; j < newParams.length; j++) {
+				newParams[j] = " ";
+			}
+			effortCategoryArray[i] = new EffortCategory(newParams[0], newParams[1]);
 			effortCategories.add(effortCategoryArray[i]);
 			i++;
 		}
@@ -334,7 +360,15 @@ public class DefinitionsController implements Initializable{
 				
 		while ((line = br.readLine()) != null) {
 			String[] params = line.split("\\|");
-			planArray[i] = new Plan(params[0], params[1]);
+			String[] newParams = new String[2];
+			
+			for (int j = 0; j < params.length; j++) {
+				newParams[j] = params[j];
+			}
+			for (int j = params.length; j < newParams.length; j++) {
+				newParams[j] = " ";
+			}
+			planArray[i] = new Plan(newParams[0], newParams[1]);
 			plans.add(planArray[i]);
 			i++;
 		}
@@ -358,7 +392,15 @@ public class DefinitionsController implements Initializable{
 					
 		while ((line = br.readLine()) != null) {
 			String[] params = line.split("\\|");
-			deliverableArray[i] = new Deliverable(params[0], params[1]);
+			String[] newParams = new String[2];
+			
+			for (int j = 0; j < params.length; j++) {
+				newParams[j] = params[j];
+			}
+			for (int j = params.length; j < newParams.length; j++) {
+				newParams[j] = " ";
+			}
+			deliverableArray[i] = new Deliverable(newParams[0], newParams[1]);
 			deliverables.add(deliverableArray[i]);
 			i++;
 		}
@@ -382,7 +424,15 @@ public class DefinitionsController implements Initializable{
 						
 		while ((line = br.readLine()) != null) {
 			String[] params = line.split("\\|");
-			interruptionArray[i] = new Interruption(params[0], params[1]);
+			String[] newParams = new String[2];
+			
+			for (int j = 0; j < params.length; j++) {
+				newParams[j] = params[j];
+			}
+			for (int j = params.length; j < newParams.length; j++) {
+				newParams[j] = " ";
+			}
+			interruptionArray[i] = new Interruption(newParams[0], newParams[1]);
 			interruptions.add(interruptionArray[i]);
 			i++;
 		}
@@ -406,7 +456,15 @@ public class DefinitionsController implements Initializable{
 							
 		while ((line = br.readLine()) != null) {
 			String[] params = line.split("\\|");
-			defectCategoryArray[i] = new DefectCategory(params[0], params[1]);
+			String[] newParams = new String[2];
+			
+			for (int j = 0; j < params.length; j++) {
+				newParams[j] = params[j];
+			}
+			for (int j = params.length; j < newParams.length; j++) {
+				newParams[j] = " ";
+			}
+			defectCategoryArray[i] = new DefectCategory(newParams[0], newParams[1]);
 			defectCategories.add(defectCategoryArray[i]);
 			i++;
 		}
@@ -434,6 +492,7 @@ public class DefinitionsController implements Initializable{
 			bw = new BufferedWriter(new FileWriter("projectFiles.txt"));
 			
 			for (int i = 0; i < projectArray.length; i++) {
+				
 				bw.write(projectArray[i].toString());
 			}
 			
