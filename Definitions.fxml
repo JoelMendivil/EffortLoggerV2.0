@@ -14,14 +14,66 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button layoutX="359.0" layoutY="472.0" mnemonicParsing="false" onAction="#switchToEffortLoggerConsole" text="Proceed to the Effort Log Console" />
-      <TableView fx:id="projectTable" layoutX="22.0" layoutY="35.0" prefHeight="200.0" prefWidth="591.0">
+      <Button layoutX="14.0" layoutY="960.0" mnemonicParsing="false" onAction="#switchToEffortLoggerConsole" text="Proceed to the Effort Log Console" />
+      <TableView fx:id="projectTable" layoutX="22.0" layoutY="35.0" prefHeight="200.0" prefWidth="713.0">
         <columns>
           <TableColumn fx:id="numberColumn" prefWidth="37.0" text="1a." />
-          <TableColumn fx:id="nameColumn" onEditCommit="#changeProjectNameCellEvent" prefWidth="195.0" text="Specity Project Names Here:" />
-            <TableColumn fx:id="step1Column" onEditCommit="#changeProjectStep1CellEvent" prefWidth="35.0" text="1" />
-            <TableColumn fx:id="step2Column" onEditCommit="#changeProjectStep2CellEvent" prefWidth="32.1160888671875" text="2" />
-            <TableColumn fx:id="step3Column" onEditCommit="#changeProjectStep3CellEvent" prefWidth="36.996978759765625" text="3" />
+          <TableColumn fx:id="nameColumn" prefWidth="195.0" text="Specity Project Names Here:" />
+            <TableColumn fx:id="step1Column" prefWidth="30.0" text="1" />
+            <TableColumn fx:id="step2Column" prefWidth="30.0" text="2" />
+            <TableColumn fx:id="step3Column" prefWidth="30.0" text="3" />
+            <TableColumn fx:id="step4Column" minWidth="8.0" prefWidth="30.0" text="4" />
+            <TableColumn fx:id="step5Column" prefWidth="30.0" text="5" />
+            <TableColumn fx:id="step6Column" prefWidth="30.0" text="6" />
+            <TableColumn fx:id="step7Column" prefWidth="30.0" text="7" />
+            <TableColumn fx:id="step8Column" prefWidth="30.0" text="8" />
+            <TableColumn fx:id="step9Column" prefWidth="30.0" text="9" />
+            <TableColumn fx:id="step10Column" prefWidth="30.0" text="10" />
+            <TableColumn fx:id="step11Column" prefWidth="30.0" text="11" />
+            <TableColumn fx:id="step12Column" minWidth="7.0" prefWidth="30.0" text="12" />
+            <TableColumn fx:id="step13Column" prefWidth="30.0" text="13" />
+            <TableColumn fx:id="step14Column" prefWidth="30.0" text="14" />
+            <TableColumn fx:id="step15Column" prefWidth="30.0" text="15" />
+            <TableColumn fx:id="step16Column" prefWidth="30.0" text="16" />
+        </columns>
+      </TableView>
+      <Button layoutX="862.0" layoutY="22.0" mnemonicParsing="false" onAction="#saveChanges" text="Save Changes" />
+      <TableView fx:id="lifeCycleTable" layoutX="29.0" layoutY="259.0" prefHeight="200.0" prefWidth="265.0">
+        <columns>
+          <TableColumn fx:id="indexColumn" prefWidth="24.0" text="2" />
+          <TableColumn fx:id="lifeCycleNameColumn" prefWidth="173.0" text="Specify Life Cycle Steps here:" />
+            <TableColumn fx:id="effortCategoryColumn" prefWidth="33.0" text="EC" />
+            <TableColumn fx:id="deliverableColumn" prefWidth="32.0" text="D" />
+        </columns>
+      </TableView>
+      <TableView fx:id="effortCategoryTable" layoutX="29.0" layoutY="478.0" prefHeight="200.0" prefWidth="265.0">
+        <columns>
+          <TableColumn fx:id="ECIndexColumn" prefWidth="29.0" text="3" />
+          <TableColumn fx:id="effortCategoryNameColumn" prefWidth="234.0" text="Specify Effort Categories Here:" />
+        </columns>
+      </TableView>
+      <TableView fx:id="planTable" layoutX="341.0" layoutY="259.0" prefHeight="200.0" prefWidth="222.0">
+        <columns>
+          <TableColumn fx:id="planIndexColumn" prefWidth="25.0" text="4" />
+          <TableColumn fx:id="planNameColumn" prefWidth="195.0" text="Specify the Plans Here:" />
+        </columns>
+      </TableView>
+      <TableView fx:id="deliverableTable" layoutX="341.0" layoutY="478.0" prefHeight="200.0" prefWidth="222.0">
+        <columns>
+          <TableColumn fx:id="deliverableIndexColumn" prefWidth="30.0" text="5" />
+          <TableColumn fx:id="deliverableNameColumn" prefWidth="190.0" text="Specify the Deliverables Here:" />
+        </columns>
+      </TableView>
+      <TableView fx:id="interruptionTable" layoutX="609.0" layoutY="259.0" prefHeight="200.0" prefWidth="208.0">
+        <columns>
+          <TableColumn fx:id="interruptionIndexColumn" prefWidth="25.0" text="6" />
+          <TableColumn fx:id="interruptionNameColumn" prefWidth="174.0" text="Specify the Interruptions Here:" />
+        </columns>
+      </TableView>
+      <TableView fx:id="defectCategoryTable" layoutX="609.0" layoutY="478.0" prefHeight="200.0" prefWidth="208.0">
+        <columns>
+          <TableColumn fx:id="defectCategoryIndexColumn" prefWidth="23.0" text="7" />
+          <TableColumn fx:id="defectCategoryNameColumn" prefWidth="182.0" text="Specify Defect Categories Here:" />
         </columns>
       </TableView>
    </children>

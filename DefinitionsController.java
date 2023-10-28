@@ -26,6 +26,12 @@ public class DefinitionsController implements Initializable{
 	private Scene scene;
 	private Parent root;
 	private Project[] projectArray = new Project[10];
+	private LifeCycle[] lifeCycleArray = new LifeCycle[30];
+	private EffortCategory[] effortCategoryArray = new EffortCategory[5];
+	private Plan[] planArray = new Plan[10];
+	private Deliverable[] deliverableArray = new Deliverable[10];
+	private Interruption[] interruptionArray = new Interruption[10];
+	private DefectCategory[] defectCategoryArray = new DefectCategory[15];
 	
 	//Buffered Reader and Writer for reading/writing files
 	BufferedReader br;
@@ -33,13 +39,59 @@ public class DefinitionsController implements Initializable{
 	
 	//Create all the tables
 	@FXML private TableView<Project> projectTable;
+	@FXML private TableView<LifeCycle> lifeCycleTable;
+	@FXML private TableView<EffortCategory> effortCategoryTable;
+	@FXML private TableView<Plan> planTable;
+	@FXML private TableView<Deliverable> deliverableTable;
+	@FXML private TableView<Interruption> interruptionTable;
+	@FXML private TableView<DefectCategory> defectCategoryTable;
+	
 	
 	//Creates all the columns in the Project Table
-	@FXML private TableColumn<Project, String> numberColumn;
+	@FXML private TableColumn<Project, String> numberColumn ;
 	@FXML private TableColumn<Project, String> nameColumn;
 	@FXML private TableColumn<Project, String> step1Column;
 	@FXML private TableColumn<Project, String> step2Column;
 	@FXML private TableColumn<Project, String> step3Column;
+	@FXML private TableColumn<Project, String> step4Column;
+	@FXML private TableColumn<Project, String> step5Column;
+	@FXML private TableColumn<Project, String> step6Column;
+	@FXML private TableColumn<Project, String> step7Column;
+	@FXML private TableColumn<Project, String> step8Column;
+	@FXML private TableColumn<Project, String> step9Column;
+	@FXML private TableColumn<Project, String> step10Column;
+	@FXML private TableColumn<Project, String> step11Column;
+	@FXML private TableColumn<Project, String> step12Column;
+	@FXML private TableColumn<Project, String> step13Column;
+	@FXML private TableColumn<Project, String> step14Column;
+	@FXML private TableColumn<Project, String> step15Column;
+	@FXML private TableColumn<Project, String> step16Column;
+	
+	//Creates all the columns in the Life Cycle Table
+	@FXML private TableColumn<LifeCycle, String> indexColumn = new TableColumn<LifeCycle, String>("");
+	@FXML private TableColumn<LifeCycle, String> lifeCycleNameColumn = new TableColumn<LifeCycle, String>("");
+	@FXML private TableColumn<LifeCycle, String> effortCategoryColumn = new TableColumn<LifeCycle, String>("");
+	@FXML private TableColumn<LifeCycle, String> deliverableColumn = new TableColumn<LifeCycle, String>("");
+	
+	//Creates all the columns in the Effort Category Table
+	@FXML private TableColumn<EffortCategory, String> ECIndexColumn = new TableColumn<EffortCategory, String>("");
+	@FXML private TableColumn<EffortCategory, String> effortCategoryNameColumn = new TableColumn<EffortCategory, String>("");
+	
+	//Creates all the columns in the Plan Table
+	@FXML private TableColumn<Plan, String> planIndexColumn = new TableColumn<Plan, String>("");
+	@FXML private TableColumn<Plan, String> planNameColumn = new TableColumn<Plan, String>("");
+	
+	//Creates all the columns in the Deliverable Table
+	@FXML private TableColumn<Deliverable, String> deliverableIndexColumn = new TableColumn<Deliverable, String>("");
+	@FXML private TableColumn<Deliverable, String> deliverableNameColumn = new TableColumn<Deliverable, String>("");
+	
+	//Creates all the columns in the Interruption Table
+	@FXML private TableColumn<Interruption, String> interruptionIndexColumn = new TableColumn<Interruption, String>("");
+	@FXML private TableColumn<Interruption, String> interruptionNameColumn = new TableColumn<Interruption, String>("");
+	
+	//Creates all the columns in the Defect Category Table
+	@FXML private TableColumn<DefectCategory, String> defectCategoryIndexColumn = new TableColumn<DefectCategory, String>("");
+	@FXML private TableColumn<DefectCategory, String> defectCategoryNameColumn = new TableColumn<DefectCategory, String>("");
 	
 	//Initialize all the values within the tables on launch 
 	@Override
@@ -51,26 +103,150 @@ public class DefinitionsController implements Initializable{
 		step1Column.setCellValueFactory(cellData -> cellData.getValue().step1Property());
 		step2Column.setCellValueFactory(cellData -> cellData.getValue().step2Property());
 		step3Column.setCellValueFactory(cellData -> cellData.getValue().step3Property());
-
+		step4Column.setCellValueFactory(cellData -> cellData.getValue().step4Property());
+		step5Column.setCellValueFactory(cellData -> cellData.getValue().step5Property());
+		step6Column.setCellValueFactory(cellData -> cellData.getValue().step6Property());
+		step7Column.setCellValueFactory(cellData -> cellData.getValue().step7Property());
+		step8Column.setCellValueFactory(cellData -> cellData.getValue().step8Property());
+		step9Column.setCellValueFactory(cellData -> cellData.getValue().step9Property());
+		step10Column.setCellValueFactory(cellData -> cellData.getValue().step10Property());
+		step11Column.setCellValueFactory(cellData -> cellData.getValue().step11Property());
+		step12Column.setCellValueFactory(cellData -> cellData.getValue().step12Property());
+		step13Column.setCellValueFactory(cellData -> cellData.getValue().step13Property());
+		step14Column.setCellValueFactory(cellData -> cellData.getValue().step14Property());
+		step15Column.setCellValueFactory(cellData -> cellData.getValue().step15Property());
+		step16Column.setCellValueFactory(cellData -> cellData.getValue().step16Property());
+		
+		//All columns for the Life Cycle Table
+		indexColumn.setCellValueFactory(cellData -> cellData.getValue().indexProperty());
+		lifeCycleNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+		effortCategoryColumn.setCellValueFactory(cellData -> cellData.getValue().effortCategoryProperty());
+		deliverableColumn.setCellValueFactory(cellData -> cellData.getValue().deliverableProperty());
+		
+		//All columns for the Effort Category Table
+		ECIndexColumn.setCellValueFactory(cellData -> cellData.getValue().indexProperty());
+		effortCategoryNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+		
+		//All columns for the Plan Table
+		planIndexColumn.setCellValueFactory(cellData -> cellData.getValue().indexProperty());
+		planNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+		
+		//All columns for the Deliverable Table
+		deliverableIndexColumn.setCellValueFactory(cellData -> cellData.getValue().indexProperty());
+		deliverableNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+		
+		//All columns for the Interruption Table
+		interruptionIndexColumn.setCellValueFactory(cellData -> cellData.getValue().indexProperty());
+		interruptionNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+		
+		//All columns for the Defect Category Table
+		defectCategoryIndexColumn.setCellValueFactory(cellData -> cellData.getValue().indexProperty());
+		defectCategoryNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 
 		
+		//Load table information from text files
 		try {
 			projectTable.setItems(loadProjects());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		projectTable.setEditable(true); //Table is now editable
 		
-		//Opens up a text field for the project column when double-clicked on
+		try {
+			lifeCycleTable.setItems(loadLifeCycles());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			effortCategoryTable.setItems(loadEffortCategories());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			planTable.setItems(loadPlans());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			deliverableTable.setItems(loadDeliverables());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			interruptionTable.setItems(loadInterruptions());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			defectCategoryTable.setItems(loadDefectCategories());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		//Make all tables editable
+		projectTable.setEditable(true); //Table is now editable
+		lifeCycleTable.setEditable(true);
+		effortCategoryTable.setEditable(true);
+	    planTable.setEditable(true);
+	    deliverableTable.setEditable(true);
+	    interruptionTable.setEditable(true);
+	    defectCategoryTable.setEditable(true);
+		
+		//Opens up a text field for the project table columns when double-clicked on
 		nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 		step1Column.setCellFactory(TextFieldTableCell.forTableColumn());
 		step2Column.setCellFactory(TextFieldTableCell.forTableColumn());
 		step3Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step4Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step5Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step6Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step7Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step8Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step9Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step10Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step11Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step12Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step13Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step14Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step15Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		step16Column.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		//Text field functionality for Life Cycle columns
+		lifeCycleNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		effortCategoryColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		deliverableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		//Text field functionality for the Effort Category columns
+		effortCategoryNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		//Text field functionality for the Plan columns
+		planNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		//Text field functionality for the Deliverable columns
+		deliverableNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		//Text field functionality for the Interruption columns
+		interruptionNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+		
+		//Text field functionality for the Defect Category columns
+		defectCategoryNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 		
 	}
 	
-	//Creates a list of projects with values to be initialized to a table
+	//Creates a list of project objects with values to be initialized to a table
 	public ObservableList<Project> loadProjects() throws IOException{
 		
 		//List of Projects
@@ -84,7 +260,9 @@ public class DefinitionsController implements Initializable{
 		
 		while ((line = br.readLine()) != null) {
 			String[] params = line.split("\\|");
-			projectArray[i] = new Project(params[0], params[1], params[2], params[3], params[4]);
+			projectArray[i] = new Project(params[0], params[1], params[2], params[3], params[4], params[5], params[6],
+					                      params[7], params[8], params[9], params[10], params[11], params[12], params[13],
+					                      params[14], params[15], params[16], params[17]);
 			projects.add(projectArray[i]);
 			i++;
 		}
@@ -94,66 +272,148 @@ public class DefinitionsController implements Initializable{
 		return projects;
 	}
 	
-	//For editing the name column on the project table
-	public void changeProjectNameCellEvent(CellEditEvent editedCell) throws IOException {
-		Project projectSelected = projectTable.getSelectionModel().getSelectedItem();
+	//Creates a list of LifeCycle Objects with values to be initialized to a table
+	public ObservableList<LifeCycle> loadLifeCycles() throws IOException{
 		
-		//Captures the new value typed in the column cell
-		projectSelected.setName(editedCell.getNewValue().toString());
+		//List of life cycles
+		ObservableList<LifeCycle> lifeCycles = FXCollections.observableArrayList();
 		
-		//Changes the real project object value for later
-		for (int i = 0; i < projectArray.length; i++) {
-			if (projectArray[i].getName().equals(projectSelected.getName())) {
-				projectArray[i].setName(editedCell.getNewValue().toString());
-			}
+		//Read from projectFiles.txt
+		br = new BufferedReader(new FileReader("LifeCycleFiles.txt"));
+		
+		String line;
+		int i = 0;
+		
+		while ((line = br.readLine()) != null) {
+			String[] params = line.split("\\|");
+			lifeCycleArray[i] = new LifeCycle(params[0], params[1], params[2], params[3]);
+			lifeCycles.add(lifeCycleArray[i]);
+			i++;
 		}
-		saveProjects();
 		
+		br.close();
+				
+		return lifeCycles;
 	}
 	
-	//For editing the step1 column on the project table
-	public void changeProjectStep1CellEvent(CellEditEvent editedCell) throws IOException {
-		Project projectSelected = projectTable.getSelectionModel().getSelectedItem();
-		
-		//Captures the new value typed in the column cell
-		projectSelected.setStep1(editedCell.getNewValue().toString());
-		
-		for (int i = 0; i < projectArray.length; i++) {
-			if (projectArray[i].getStep1().equals(projectSelected.getName())) {
-				projectArray[i].setStep1(editedCell.getNewValue().toString());
-			}
+	//Creates a list of Effort Category Objects with values to be initialized to a table
+	public ObservableList<EffortCategory> loadEffortCategories() throws IOException{
+			
+		//List of life cycles
+		ObservableList<EffortCategory> effortCategories = FXCollections.observableArrayList();
+			
+		//Read from projectFiles.txt
+		br = new BufferedReader(new FileReader("effortCategoryFiles.txt"));
+			
+		String line;
+		int i = 0;
+			
+		while ((line = br.readLine()) != null) {
+			String[] params = line.split("\\|");
+			effortCategoryArray[i] = new EffortCategory(params[0], params[1]);
+			effortCategories.add(effortCategoryArray[i]);
+			i++;
 		}
-		saveProjects();
+			
+		br.close();
+					
+		return effortCategories;
 	}
 	
-	//For editing the step2 column on the project table
-	public void changeProjectStep2CellEvent(CellEditEvent editedCell) throws IOException {
-		Project projectSelected = projectTable.getSelectionModel().getSelectedItem();
-		
-		//Captures the new value typed in the column cell
-		projectSelected.setStep2(editedCell.getNewValue().toString());
-		
-		for (int i = 0; i < projectArray.length; i++) {
-			if (projectArray[i].getStep2().equals(projectSelected.getName())) {
-				projectArray[i].setStep2(editedCell.getNewValue().toString());
-			}
+	//Creates a list of Plan Objects with values to be initialized to a table
+	public ObservableList<Plan> loadPlans() throws IOException{
+				
+		//List of life cycles
+		ObservableList<Plan> plans = FXCollections.observableArrayList();
+				
+		//Read from projectFiles.txt
+		br = new BufferedReader(new FileReader("planFiles.txt"));
+				
+		String line;
+		int i = 0;
+				
+		while ((line = br.readLine()) != null) {
+			String[] params = line.split("\\|");
+			planArray[i] = new Plan(params[0], params[1]);
+			plans.add(planArray[i]);
+			i++;
 		}
-		saveProjects();
+				
+		br.close();
+						
+		return plans;
 	}
 	
-	//For editing the step3 column on the project table
-	public void changeProjectStep3CellEvent(CellEditEvent editedCell) throws IOException {
-		Project projectSelected = projectTable.getSelectionModel().getSelectedItem();
-		
-		//Captures the new value typed in the column cell
-		projectSelected.setStep3(editedCell.getNewValue().toString());
-		
-		for (int i = 0; i < projectArray.length; i++) {
-			if (projectArray[i].getStep3().equals(projectSelected.getName())) {
-				projectArray[i].setStep3(editedCell.getNewValue().toString());
-			}
+	//Creates a list of Deliverable Objects with values to be initialized to a table
+	public ObservableList<Deliverable> loadDeliverables() throws IOException{
+					
+		//List of life cycles
+		ObservableList<Deliverable> deliverables = FXCollections.observableArrayList();
+					
+		//Read from projectFiles.txt
+		br = new BufferedReader(new FileReader("deliverableFiles.txt"));
+					
+		String line;
+		int i = 0;
+					
+		while ((line = br.readLine()) != null) {
+			String[] params = line.split("\\|");
+			deliverableArray[i] = new Deliverable(params[0], params[1]);
+			deliverables.add(deliverableArray[i]);
+			i++;
 		}
-		saveProjects();
+					
+		br.close();
+							
+		return deliverables;
+	}
+	
+	//Creates a list of Interruption Objects with values to be initialized to a table
+	public ObservableList<Interruption> loadInterruptions() throws IOException{
+						
+		//List of life cycles
+		ObservableList<Interruption> interruptions = FXCollections.observableArrayList();
+						
+		//Read from projectFiles.txt
+		br = new BufferedReader(new FileReader("interruptionFiles.txt"));
+						
+		String line;
+		int i = 0;
+						
+		while ((line = br.readLine()) != null) {
+			String[] params = line.split("\\|");
+			interruptionArray[i] = new Interruption(params[0], params[1]);
+			interruptions.add(interruptionArray[i]);
+			i++;
+		}
+						
+		br.close();
+								
+		return interruptions;
+	}
+	
+	//Creates a list of Defect Category Objects with values to be initialized to a table
+	public ObservableList<DefectCategory> loadDefectCategories() throws IOException{
+							
+		//List of life cycles
+		ObservableList<DefectCategory> defectCategories = FXCollections.observableArrayList();
+							
+		//Read from projectFiles.txt
+		br = new BufferedReader(new FileReader("defectCategoryFiles.txt"));
+							
+		String line;
+		int i = 0;
+							
+		while ((line = br.readLine()) != null) {
+			String[] params = line.split("\\|");
+			defectCategoryArray[i] = new DefectCategory(params[0], params[1]);
+			defectCategories.add(defectCategoryArray[i]);
+			i++;
+		}
+							
+		br.close();
+									
+		return defectCategories;
 	}
 	
 	//Switches scenes to the EffortLogger Console main page
@@ -164,18 +424,75 @@ public class DefinitionsController implements Initializable{
 			stage.setScene(scene);
 			stage.show();
 			
-			saveProjects();
+			//saveProjects();
 		}
 		
 		//Saves the changes to the projects table to projectFiles.txt
-		public void saveProjects() throws IOException {
+		public void saveChanges() throws IOException {
+			
+			//Save project table changes
 			bw = new BufferedWriter(new FileWriter("projectFiles.txt"));
 			
-					for (int i = 0; i < projectArray.length; i++) {
-						bw.write(projectArray[i].toString());
-					}
+			for (int i = 0; i < projectArray.length; i++) {
+				bw.write(projectArray[i].toString());
+			}
 			
-					bw.close();
+			bw.close();
+					
+			//Save life cycle table changes
+			bw = new BufferedWriter(new FileWriter("LifeCycleFiles.txt"));
+			
+			for (int i = 0; i < lifeCycleArray.length; i++) {
+				bw.write(lifeCycleArray[i].toString());
+			}
+			
+			bw.close();
+			
+			//save effort category table changes
+			bw = new BufferedWriter(new FileWriter("effortCategoryFiles.txt"));
+			
+			for (int i = 0; i < effortCategoryArray.length; i++) {
+				bw.write(effortCategoryArray[i].toString());
+			}
+			
+			bw.close();
+			
+			//save plan table changes
+			bw = new BufferedWriter(new FileWriter("planFiles.txt"));
+			
+			for (int i = 0; i < planArray.length; i++) {
+				bw.write(planArray[i].toString());
+			}
+			
+			bw.close();
+			
+			//save deliverable table changes
+			bw = new BufferedWriter(new FileWriter("deliverableFiles.txt"));
+			
+			for (int i = 0; i < deliverableArray.length; i++) {
+				bw.write(deliverableArray[i].toString());
+			}
+			
+			bw.close();
+			
+			//save interruption table changes
+			bw = new BufferedWriter(new FileWriter("interruptionFiles.txt"));
+			
+			for (int i = 0; i < interruptionArray.length; i++) {
+				bw.write(interruptionArray[i].toString());
+			}
+			
+			bw.close();
+			
+			//save defect category table changes
+			bw = new BufferedWriter(new FileWriter("defectCategoryFiles.txt"));
+			
+			for (int i = 0; i < defectCategoryArray.length; i++) {
+				bw.write(defectCategoryArray[i].toString());
+			}
+			
+			bw.close();
+			
 		}
 		
 }
