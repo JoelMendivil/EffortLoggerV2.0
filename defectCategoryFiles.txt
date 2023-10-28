@@ -1,0 +1,15 @@
+1|defectcategory1
+2|
+3|defectcategory3
+4|new
+5|defectcategory5
+6|defectcategory6
+7|defectcategory7
+8|defectcategory8
+9|defectcategory9
+10|defectcategory10
+11|defectcategory12
+12|defectcategory12
+13|defectcategory13
+14|defectcategory14
+15|defectcategory15

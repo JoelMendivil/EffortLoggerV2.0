@@ -1,0 +1,5 @@
+1|
+2|EffortCategory2
+3|EffortCategory3
+4|EffortCategory4
+5|new category
