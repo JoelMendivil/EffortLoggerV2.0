@@ -548,7 +548,7 @@ public class DefinitionsController implements Initializable{
 			}
 			
 			bw.close();
-			//switches to EffortLogger Console page after saving
+			//switches to EffortLogger Console interface after saving
 			root = FXMLLoader.load(getClass().getResource("EffortLoggerConsole.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
