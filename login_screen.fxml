@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Login_controller">
+   <left>
+      <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: Navy blue;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="17.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EFFORT LOGGER" wrappingWidth="193.99868774414062">
+               <font>
+                  <Font name="Serif Regular" size="24.0" />
+               </font>
+            </Text>
+            <RadioButton fx:id="emp" layoutX="70.0" layoutY="238.0" mnemonicParsing="false" onAction="#em_log" text="EMPLOYEE" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="12.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="admin" layoutX="53.0" layoutY="192.0" mnemonicParsing="false" onAction="#ad_log" text="ADMINISTRATOR" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="12.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <PasswordField fx:id="password" layoutX="72.0" layoutY="238.0" promptText="&quot;Example123&quot;" />
+            <TextField fx:id="username" layoutX="72.0" layoutY="187.0" promptText="&quot;User id&quot;" />
+            <Text layoutX="77.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter User id and Password" wrappingWidth="139.47007751464844">
+               <font>
+                  <Font name="Serif Italic" size="12.0" />
+               </font>
+            </Text>
+            <Button layoutX="120.0" layoutY="293.0" mnemonicParsing="false" onAction="#switchToEffortLoggerConsole" text="LOG IN" />
+            <Label fx:id="invalid_log" layoutX="136.0" layoutY="341.0" prefHeight="17.0" prefWidth="21.0" textFill="RED" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
