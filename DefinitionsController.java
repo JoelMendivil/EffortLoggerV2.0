@@ -14,9 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
@@ -486,8 +484,7 @@ public class DefinitionsController implements Initializable{
 		}
 		
 		//Saves the changes to the projects table to projectFiles.txt
-		public void saveChanges() throws IOException {
-			
+		public void saveChanges(ActionEvent event) throws IOException {
 			//Save project table changes
 			bw = new BufferedWriter(new FileWriter("projectFiles.txt"));
 			
@@ -552,6 +549,12 @@ public class DefinitionsController implements Initializable{
 			
 			bw.close();
 			
+			root = FXMLLoader.load(getClass().getResource("EffortLoggerConsole.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		
 		}
 		
 }
