@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Admin_controller">
+   <top>
+      <TitledPane animated="false" prefHeight="71.0" prefWidth="600.0" text="untitled" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Text layoutX="29.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINISTRATOR FUNCTIONS">
+                     <font>
+                        <Font name="Serif Regular" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="133.0" layoutY="132.0" mnemonicParsing="false" onAction="#editUser" prefHeight="63.0" prefWidth="134.0" text="Edit User Info" />
+            <Button layoutX="104.0" layoutY="218.0" mnemonicParsing="false" onAction="#switchToEffortLoggerConsole" text="Proceed to Effort Logger Console" />
+            <Button layoutX="149.0" layoutY="257.0" mnemonicParsing="false" onAction="#returnToLogin" text="Return to Log In" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

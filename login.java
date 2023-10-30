@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class LoginController {
+public class login {
 		
 		int em =0, adm =0;
 
@@ -42,17 +42,23 @@ public class LoginController {
 	        String username = usernameField.getText();
 	        String password = passwordField.getText();
 	        if (username.isEmpty()&&password.isEmpty()) {
+	        	messageLabel.setLayoutX(235);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("Both fields are empty");
 	        	usernameField.setStyle("-fx-border-color: red; -fx-border-width: 2px;"); // Set the background color (optional)
 	        	passwordField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 	        }
 	        else if(username.isEmpty())
 	        {
+	        	messageLabel.setLayoutX(235);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("username field is empty");
 	        	usernameField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 	        	passwordField.setStyle("-fx-border-color: white; -fx-border-width: 0px;");
 	        }      
 	        else if(password.isEmpty()) {
+	        	messageLabel.setLayoutX(235);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("password field is empty");
 	        	usernameField.setStyle("-fx-border-color: white; -fx-border-width: 0px;");
 	        	passwordField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
@@ -62,20 +68,26 @@ public class LoginController {
 	        	passwordField.setStyle("-fx-border-color: white; -fx-border-width: 0px;");
 	        if(username.length()<17&&password.length()<10) {
 	        if (isValidCredentials(username, password)) {
+	        	messageLabel.setLayoutX(245);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("Login Successful");
-	        		Object root = FXMLLoader.load(getClass().getResource("EffortLoggerConsole.fxml"));
+	        		Object root = FXMLLoader.load(getClass().getResource("Admin_func.fxml"));
 	        		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 	        		Scene scene = new Scene((Parent) root);
 	        		stage.setScene(scene);
 	        		stage.show();
 	        } else {
+	        	messageLabel.setLayoutX(245);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("Invalid Credentials");
 	            usernameField.clear();
 	            passwordField.clear();
 	        }}else {
 	        	usernameField.clear();
 	            passwordField.clear();
-	        	messageLabel.setText("Please make sure your credentials follow the guidelines");
+	        	messageLabel.setLayoutX(40);
+	        	messageLabel.setLayoutY(150);
+	        	messageLabel.setText("Please make sure your username and password contains less than 16 and 10 characters respectively");
 	        } }
 	        
 	    	 }
@@ -83,17 +95,23 @@ public class LoginController {
 	    		 String username = usernameField.getText();
 	 	        String password = passwordField.getText();
 	 	        if (username.isEmpty()&&password.isEmpty()) {
+	 	        	messageLabel.setLayoutX(235);
+	 	        	messageLabel.setLayoutY(150);
 	 	        	messageLabel.setText("Both fields are empty");
 	 	        	usernameField.setStyle("-fx-border-color: red; -fx-border-width: 2px;"); // Set the background color (optional)
 	 	        	passwordField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 	 	        }
 	 	        else if(username.isEmpty())
 	 	        {
+	 	        	messageLabel.setLayoutX(235);
+	 	        	messageLabel.setLayoutY(150);
 	 	        	messageLabel.setText("username field is empty");
 	 	        	usernameField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 	 	        	passwordField.setStyle("-fx-border-color: white; -fx-border-width: 0px;");
 	 	        }      
 	 	        else if(password.isEmpty()) {
+	 	        	messageLabel.setLayoutX(235);
+	 	        	messageLabel.setLayoutY(150);
 	 	        	messageLabel.setText("password field is empty");
 	 	        	usernameField.setStyle("-fx-border-color: white; -fx-border-width: 0px;");
 	 	        	passwordField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
@@ -103,20 +121,26 @@ public class LoginController {
 	 	        	passwordField.setStyle("-fx-border-color: white; -fx-border-width: 0px;");
 	 	        if(username.length()<17&&password.length()<10) {
 	 	        if (isValidCredentials(username, password)) {
+	 	        	messageLabel.setLayoutX(245);
+	 	        	messageLabel.setLayoutY(150);
 	 	        	messageLabel.setText("Login Successful");
-	 	        		Object root = FXMLLoader.load(getClass().getResource("Admin_func.fxml"));
+	 	        		Object root = FXMLLoader.load(getClass().getResource("EffortLoggerConsole.fxml"));
 	 	        		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 	 	        		Scene scene = new Scene((Parent) root);
 	 	        		stage.setScene(scene);
 	 	        		stage.show();
 	 	        } else {
+	 	        	messageLabel.setLayoutX(245);
+	 	        	messageLabel.setLayoutY(150);
 	 	        	messageLabel.setText("Invalid Credentials");
 	 	            usernameField.clear();
 	 	            passwordField.clear();
 	 	        }}else {
 	 	        	usernameField.clear();
 	 	            passwordField.clear();
-	 	        	messageLabel.setText("Please make sure your credentials follow the guidelines");
+	 	        	messageLabel.setLayoutX(40);
+	 	        	messageLabel.setLayoutY(150);
+	 	        	messageLabel.setText("Please make sure your username and password contains less than 16 and 10 characters respectively");
 	 	        } }
 	    	 }
 	        	
@@ -126,17 +150,23 @@ public class LoginController {
 	        String username = usernameField.getText();
 	        String password = passwordField.getText();
 	        if (username.isEmpty()&&password.isEmpty()) {
+	        	messageLabel.setLayoutX(235);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("Both fields are empty");
 	        	usernameField.setStyle("-fx-border-color: red; -fx-border-width: 2px;"); // Set the background color (optional)
 	        	passwordField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 	        }
 	        else if(username.isEmpty())
 	        {
+	        	messageLabel.setLayoutX(235);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("username field is empty");
 	        	usernameField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
 	        	passwordField.setStyle("-fx-border-color: white; -fx-border-width: 0px;");
 	        }      
 	        else if(password.isEmpty()) {
+	        	messageLabel.setLayoutX(235);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("password field is empty");
 	        	usernameField.setStyle("-fx-border-color: white; -fx-border-width: 0px;");
 	        	passwordField.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
@@ -148,6 +178,8 @@ public class LoginController {
 	            try (PrintWriter writer = new PrintWriter(new FileWriter("credentials.txt", true))) {
 	                writer.println(username + ":" + password);
 	                writer.flush();
+	                messageLabel.setLayoutX(230);
+	            	messageLabel.setLayoutY(150);
 	                messageLabel.setText("Registration Successful");
 	                usernameField.clear();
 	                passwordField.clear();
@@ -156,9 +188,13 @@ public class LoginController {
 	                messageLabel.setText("Error registering credentials");
 	            }
 	        } else {
+	        	messageLabel.setLayoutX(200);
+	        	messageLabel.setLayoutY(150);
 	        	messageLabel.setText("Please enter a username and password");
 	        }}else {
-	        	messageLabel.setText("Please make sure your credentials follow the guidelines");
+	        	messageLabel.setLayoutX(40);
+	        	messageLabel.setLayoutY(150);
+	        	messageLabel.setText("Please make sure your username and password contains less than 16 and 10 characters respectively");
 	        } }
 	    }
 
@@ -180,13 +216,12 @@ public class LoginController {
 	    
 	    public void admin(ActionEvent event) throws IOException{
 			adm = 1;
-			em = 0;// made by kevin
-			//help with improper privilege management
 		}
 		
 		public void employee(ActionEvent event) throws IOException{
 			em = 1;
-			adm =0;// made by kevin
-			//help with improper privilege management
 		}
+
+	
+
 }
