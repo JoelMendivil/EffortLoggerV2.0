@@ -3,7 +3,6 @@ package application;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,6 +30,13 @@ public class DefinitionsController implements Initializable{
 	private Interruption[] interruptionArray = new Interruption[10];
 	private DefectCategory[] defectCategoryArray = new DefectCategory[15];
 	
+	int lenprojectarray = projectArray.length;
+	int lenlifecycle = lifeCycleArray.length;
+	int leneffortcat = effortCategoryArray.length;
+	int lenplanarray = planArray.length;
+	int lendelivarable = deliverableArray.length;
+	int leninterruption = interruptionArray.length;
+	int lendefectcategory = defectCategoryArray.length;
 	//Buffered Reader and Writer for reading/writing files
 	BufferedReader br;
 	BufferedWriter bw;
@@ -192,7 +198,68 @@ public class DefinitionsController implements Initializable{
 			e.printStackTrace();
 		}
 		
+		try {
+			if(lenprojectarray > 10) {
+				throw new IllegalArgumentException("Please follow the guidelines");
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			System.err.println("The error is because" + e.getMessage());
+		}
 		
+		try {
+			if(lenlifecycle > 30) {
+				throw new IllegalArgumentException("Please follow the guidelines");
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			System.err.println("The error is because" + e.getMessage());
+		}
+		
+		try {
+			if( leneffortcat > 5) {
+				throw new IllegalArgumentException("Please follow the guidelines");
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			System.err.println("The error is because" + e.getMessage());
+		}
+		
+		try {
+			if(lenplanarray > 10) {
+				throw new IllegalArgumentException("Please follow the guidelines");
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			System.err.println("The error is because" + e.getMessage());
+		}
+		
+		try {
+			if(lendelivarable > 10) {
+				throw new IllegalArgumentException("Please follow the guidelines");
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			System.err.println("The error is because" + e.getMessage());
+		}
+		
+		try {
+			if(leninterruption > 10) {
+				throw new IllegalArgumentException("Please follow the guidelines");
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			System.err.println("The error is because" + e.getMessage());
+		}
+		
+		try {
+			if(lendefectcategory > 15) {
+				throw new IllegalArgumentException("Please follow the guidelines");
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			System.err.println("The error is because" + e.getMessage());
+		}
 		
 		//Make all tables editable
 		projectTable.setEditable(true); //Table is now editable
@@ -548,7 +615,7 @@ public class DefinitionsController implements Initializable{
 			}
 			
 			bw.close();
-			//switches to EffortLogger Console interface after saving
+			//switches to EffortLogger Console page after saving
 			root = FXMLLoader.load(getClass().getResource("EffortLoggerConsole.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
