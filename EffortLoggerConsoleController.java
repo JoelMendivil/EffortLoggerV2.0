@@ -1,6 +1,7 @@
 package application;
 
-
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -14,7 +15,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ChoiceBox;
 
 public class EffortLoggerConsoleController {
 	
@@ -26,6 +29,7 @@ public class EffortLoggerConsoleController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private ChoiceBox<String> projectChoiceBox;
 	
 	public void switchtoEffortLogEditor(ActionEvent event) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("EffortLogEditor.fxml"));
@@ -50,6 +54,13 @@ public class EffortLoggerConsoleController {
 	}
 	public void switchtoEffortandDefectLogs(ActionEvent event) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("EffortandDefectLogs.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	public void switchtoPlanningPoker(ActionEvent event) throws IOException { //Added by Joel
+		root = FXMLLoader.load(getClass().getResource("PlanningPoker.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

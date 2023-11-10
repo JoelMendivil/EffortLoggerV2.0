@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="122.20001831054688" minHeight="0.0" prefHeight="45.199981689453125" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="314.3999824643135" minHeight="0.0" prefHeight="34.800018310546875" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="385.4000183105469" minHeight="10.0" prefHeight="35.2" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="385.4000183105469" minHeight="10.0" prefHeight="25.60000000000001" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="385.4000183105469" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="385.4000183105469" minHeight="10.0" prefHeight="209.19998779296873" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="385.4000183105469" minHeight="10.0" prefHeight="34.00001220703126" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="354.2000106811523" minHeight="10.0" prefHeight="49.40003662109376" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="After a Planning Poker session, enter in the estimates below by selecting the desired projects, life cycles, effort category, and deliverables" textAlignment="CENTER" wrapText="true" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Project:" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="15.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Life Cycle Step:" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="350.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+            </Text>
+            <ChoiceBox prefHeight="26.0" prefWidth="244.0" GridPane.rowIndex="2">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox prefHeight="26.0" prefWidth="232.0" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="350.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Effort Category:" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Arial Bold" size="12.5" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <ChoiceBox prefHeight="26.0" prefWidth="225.0" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox prefHeight="26.0" prefWidth="282.0" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="300.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <Button mnemonicParsing="false" text="Proceed to Effort Log Console" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="200.0" />
+               </GridPane.margin>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When you're done filling in the information above or want to return back, please click the button below." textAlignment="CENTER" wrappingWidth="589.4425048828125" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+   </center>
+   <top>
+      <Label alignment="CENTER" centerShape="false" contentDisplay="CENTER" prefHeight="38.0" prefWidth="331.0" text="Planning Poker Estimates" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>
