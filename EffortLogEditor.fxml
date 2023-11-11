@@ -59,7 +59,7 @@
                   <Font name="Arial Bold" size="12.5" />
                </font>
             </Text>
-            <ChoiceBox prefHeight="26.0" prefWidth="557.0" translateX="38.0" translateY="4.0" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="choice_editor" prefHeight="26.0" prefWidth="557.0" translateX="38.0" translateY="4.0" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="One effort log entry for this project" translateX="41.0" translateY="-13.0" GridPane.rowIndex="3">
                <font>
                   <Font name="Arial" size="12.5" />
@@ -160,4 +160,3 @@
       </GridPane>
    </bottom>
 </BorderPane>
-
