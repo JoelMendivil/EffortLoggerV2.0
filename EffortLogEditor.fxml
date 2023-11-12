@@ -52,8 +52,8 @@
                   <Font name="Arial Bold" size="12.5" />
                </font>
             </Text>
-            <ChoiceBox prefHeight="26.0" prefWidth="303.0" translateX="41.0" translateY="-5.0" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="215.0" text="Clear This Effort Log" translateX="370.0" translateY="-5.0" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="delete_log" prefHeight="26.0" prefWidth="303.0" translateX="41.0" translateY="-5.0" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#removeSelectedItem" prefHeight="26.0" prefWidth="215.0" text="Clear This Effort Log" translateX="370.0" translateY="-5.0" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2.b. Select the Effort Log Entry to be modified and make it the Current Effort Log Entry." translateX="9.0" translateY="12.0" GridPane.rowIndex="3">
                <font>
                   <Font name="Arial Bold" size="12.5" />
