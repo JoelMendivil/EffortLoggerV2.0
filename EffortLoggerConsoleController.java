@@ -90,11 +90,18 @@ public class EffortLoggerConsoleController {
 		stage.show();
 	}
 	public void switchtoEffortandDefectLogs(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("EffortandDefectLogs.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("EffortandDefectLogs.fxml"));
+        Parent secondRoot = loader.load();
+
+        // Get the controller of the second FXML and call the method to load choices
+        effectdefectlogs secondController2 = loader.getController();
+        secondController2.newchoices();
+
+        // Switch to the second scene
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene secondScene = new Scene(secondRoot);
+        stage.setScene(secondScene);
+        stage.show();
 	}
 	public void switchtoPlanningPoker(ActionEvent event) throws IOException { //Added by Joel
 		root = FXMLLoader.load(getClass().getResource("PlanningPoker.fxml"));
