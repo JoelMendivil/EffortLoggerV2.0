@@ -1,8 +1,10 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,7 +21,6 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
 
 
 public class EffortLoggerConsoleController {
@@ -39,6 +40,8 @@ public class EffortLoggerConsoleController {
 	private ChoiceBox<String> lifecycle;
 	@FXML
 	private ChoiceBox<String> effortcategory;
+	@FXML
+	private ChoiceBox<String> deliverable;
 	
 	private LocalTime startTime;
 	private LocalTime stopTime;
@@ -48,9 +51,11 @@ public class EffortLoggerConsoleController {
 	
     @FXML
     public void initialize() {
-    	project.getItems().addAll("P 1", "P 2", "P 3");
-    	lifecycle.getItems().addAll("L 1","L 2","L 3");
-    	effortcategory.getItems().addAll("E 1","E 2","E 3");
+    	// Load data from file and populate the ChoiceBox
+    	loadDataFromFile("projectFiles.txt", project);
+   	    loadDataFromFile("LifeCycleFiles.txt", lifecycle);
+   	    loadDataFromFile("effortCategoryFiles.txt", effortcategory);
+   	    loadDataFromFile("deliverableFiles.txt", deliverable);
     }
 	
 	public void switchtoEffortLogEditor(ActionEvent event) throws IOException {
@@ -89,6 +94,13 @@ public class EffortLoggerConsoleController {
 		stage.setScene(scene);
 		stage.show();
 	}
+	public void switchtoPlanningPoker(ActionEvent event) throws IOException { //Added by Joel
+		root = FXMLLoader.load(getClass().getResource("PlanningPoker.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
 	@FXML
 	void start(ActionEvent event) throws IOException{//done by sriram
 		ClockLabelRectangle.setFill(Color.GREEN);//changes the clock is stopped label to green 
@@ -110,6 +122,17 @@ public class EffortLoggerConsoleController {
         }
 		}
 
+	//Joel
+	private void loadDataFromFile(String fileName, ChoiceBox<String> choiceBox) {
+	    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	            choiceBox.getItems().add(line);
+	        }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 }
 
 

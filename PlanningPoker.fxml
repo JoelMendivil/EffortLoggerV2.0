@@ -12,6 +12,8 @@
 <?import javafx.scene.text.Text?>
 
 
+<BorderPane fx:controller="application.PlanningPokerConsole" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane BorderPane.alignment="CENTER">
@@ -46,7 +48,7 @@
                   <Font name="Arial Bold" size="12.5" />
                </font>
             </Text>
-            <ChoiceBox prefHeight="26.0" prefWidth="244.0" GridPane.rowIndex="2">
+            <ChoiceBox fx:id="project" prefHeight="26.0" prefWidth="244.0" GridPane.rowIndex="2">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -54,7 +56,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <ChoiceBox prefHeight="26.0" prefWidth="232.0" GridPane.rowIndex="2">
+            <ChoiceBox fx:id="lifecycle" prefHeight="26.0" prefWidth="232.0" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="350.0" />
                </GridPane.margin>
@@ -67,17 +69,17 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <ChoiceBox prefHeight="26.0" prefWidth="225.0" GridPane.rowIndex="4">
+            <ChoiceBox fx:id="effortcategory" prefHeight="26.0" prefWidth="225.0" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <ChoiceBox prefHeight="26.0" prefWidth="282.0" GridPane.rowIndex="4">
+            <ChoiceBox fx:id="deliverable" prefHeight="26.0" prefWidth="282.0" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="300.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <Button mnemonicParsing="false" text="Proceed to Effort Log Console" GridPane.rowIndex="7">
+            <Button mnemonicParsing="false" onAction="#switchToEffortLoggerConsole" text="Proceed to Effort Log Console" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="200.0" />
                </GridPane.margin>
@@ -93,4 +95,5 @@
          </font>
       </Label>
    </top>
+</BorderPane>
 </BorderPane>
