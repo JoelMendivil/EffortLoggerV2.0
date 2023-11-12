@@ -47,7 +47,7 @@ public class EffortLoggerConsoleController {
 	private LocalTime stopTime;
 	   
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-	int i=1;
+
 	
     @FXML
     public void initialize() {
@@ -56,6 +56,7 @@ public class EffortLoggerConsoleController {
    	    loadDataFromFile("LifeCycleFiles.txt", lifecycle);
    	    loadDataFromFile("effortCategoryFiles.txt", effortcategory);
    	    loadDataFromFile("deliverableFiles.txt", deliverable);
+    	
     }
 	
 	public void switchtoEffortLogEditor(ActionEvent event) throws IOException {
@@ -66,6 +67,7 @@ public class EffortLoggerConsoleController {
         // Get the controller of the second FXML and call the method to load choices
         EffortLogEditorController secondController = loader.getController();
         secondController.loadChoices();
+        secondController.loadChoices2();
 
         // Switch to the second scene
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -114,9 +116,8 @@ public class EffortLoggerConsoleController {
 		ClockLabel.setText("Clock is Stopped");//and the text is changed to the clock is stopped  
 		//when the stop the activity button is pressed.
 		// Write to file, append mode
-		stopTime = LocalTime.now();
-		String selected = (i) +". "+LocalDate.now().toString() +" (" + startTime.format(formatter) + "-" + stopTime.format(formatter)+")"+ project.getValue()+";"+lifecycle.getValue()+";"+effortcategory.getValue();
-		i= i+1;
+		stopTime = LocalTime.now(); //clock cycle
+		String selected = LocalDate.now().toString() +" (" + startTime.format(formatter) + "-" + stopTime.format(formatter)+")"+ project.getValue()+";"+lifecycle.getValue()+";"+effortcategory.getValue();
         try (PrintWriter out = new PrintWriter(new FileWriter("out.txt", true))) {
             out.println(selected);
         }
