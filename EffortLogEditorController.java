@@ -1,6 +1,8 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -118,16 +120,20 @@ public class EffortLogEditorController {
     }
 	@FXML
 	public void updateTime(ActionEvent event)throws IOException {
+		String del = choice_editor.getValue().toString();
 		//Kevin
 				String selected = LocalDate.now().toString() +" (" + (startTime.getText().toString()) + "-" + (stopTime.getText().toString())+")"+ "null" +";"+ "null" +";"+ "null";
 		        try (PrintWriter out = new PrintWriter(new FileWriter("out.txt", true))) {
 		            out.println(selected);
 			}
 		    finished.setText("These attributes have been saved.");
+		    removePrev("out.txt", del);
+		    System.out.println(del);
 	}
 	
 	@FXML
 	public void splitLog(ActionEvent event)throws IOException {
+		String del = choice_editor.getValue().toString();
 		String ss = date.getText().toString();
 		stopTime2 = LocalTime.now();
 		//Kevin
@@ -141,5 +147,50 @@ public class EffortLogEditorController {
         	out.println(selected_);
 	   }
 	    finished.setText("These. attributes have been saved.");
+	    removePrev("out.txt", del);
+	    System.out.println(del);
+	}
+	
+	
+	
+	//written by kevin cabrera to update time stamps on entries and help split logs
+	public void removePrev(String fileName, String delV ){
+		String tempFile = "temp.txt";
+		File oldFile = new File(fileName);
+		File newFile = new File(tempFile);
+		
+		String currentLine;
+		try {
+			FileWriter fw = new FileWriter(tempFile, true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			PrintWriter pw = new PrintWriter(bw);
+			
+			FileReader fr = new FileReader(fileName);
+			BufferedReader br = new BufferedReader(fr);
+			
+			while((currentLine = br.readLine()) != null) {
+				if(!((currentLine.toString()).equals(delV))) {
+					pw.println(currentLine);
+					// searches for the desired entry to delete
+					// writes everything but that line
+				}
+			}
+			
+			pw.flush();
+			pw.close();
+			fr.close();
+			br.close();
+			bw.close();
+			fw.close();
+			
+			oldFile.deleteOnExit();
+			File dump = new File("effort_Logger_V2/out.txt");
+			newFile.renameTo(dump);
+			//rename temp to out
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			//exception handle
+		}
 	}
 }
