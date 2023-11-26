@@ -1,5 +1,5 @@
-1|
-2|EffortCategory2
-3|EffortCategory3
-4|EffortCategory4
-5|new category
+1|Plans
+2|Deliverables
+3|Interruptions
+4|Defects
+5|Others
