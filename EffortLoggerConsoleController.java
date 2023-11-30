@@ -47,8 +47,9 @@ public class EffortLoggerConsoleController {
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 	
-    @FXML
+     @FXML
     public void initialize() {
+    	other.setVisible(false);
         // Load data from file and populate the ChoiceBox
         loadDataFromFile("projectFiles.txt", project);
         loadDataFromFile("LifeCycleFiles.txt", lifecycle);
@@ -59,22 +60,28 @@ public class EffortLoggerConsoleController {
         effortcategory.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             // Clear the deliverable choice box
             deliverable.getItems().clear();
-
+            other.setVisible("Others".equals(newValue));
             // Check the selected value and populate the deliverable choice box based on it
             if ("Plans".equals(newValue)) {
                 // Load data from a specific file or add specific items
                 // For demonstration, just adding a single item
+            	plan.setText("Plans");
             	loadDataFromFile("planFiles.txt", deliverable);
             } else if ("Deliverables".equals(newValue)) {
                 // Add different items or load from a different file
             	loadDataFromFile("deliverableFiles.txt", deliverable);
+            	plan.setText("Deliverables");
             } else if("Interruptions".equals(newValue)) {
             	loadDataFromFile("interruptionFiles.txt", deliverable);
+            	plan.setText("Interruptions");
             } else if("Defects".equals(newValue)) {
             	loadDataFromFile("defectCategoryFiles.txt", deliverable);
+            	plan.setText("Defects");
+            }else if("Others".equals(newValue)) {
+           plan.setText("");
             }
-            
-        });
+            }
+        );
     }
 	
 	public void switchtoEffortLogEditor(ActionEvent event) throws IOException {
