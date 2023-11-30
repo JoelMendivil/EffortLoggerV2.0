@@ -14,7 +14,7 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="960.0" mnemonicParsing="false" onAction="#switchToEffortLoggerConsole" text="Proceed to the Effort Log Console" />
+      <Button layoutX="764.0" layoutY="74.0" mnemonicParsing="false" onAction="#switchToEffortLoggerConsole" text="Proceed to the Effort Log Console" />
       <TableView fx:id="projectTable" layoutX="22.0" layoutY="35.0" prefHeight="200.0" prefWidth="713.0">
         <columns>
           <TableColumn fx:id="numberColumn" prefWidth="37.0" text="1a." />
