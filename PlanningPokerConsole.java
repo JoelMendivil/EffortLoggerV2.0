@@ -30,13 +30,34 @@ public class PlanningPokerConsole {
 	
 	//Added by Joel
 	@FXML
-	public void initialize() {
-			// Load data from file and populate the ChoiceBox
-			loadDataFromFile("projectFiles.txt", project);
-		    loadDataFromFile("LifeCycleFiles.txt", lifecycle);
-		    loadDataFromFile("effortCategoryFiles.txt", effortcategory);
-		    loadDataFromFile("deliverableFiles.txt", deliverable);
-	}
+    public void initialize() {
+        // Load data from file and populate the ChoiceBox
+        loadDataFromFile("projectFiles.txt", project);
+        loadDataFromFile("LifeCycleFiles.txt", lifecycle);
+        loadDataFromFile("effortCategoryFiles.txt", effortcategory);
+        //loadDataFromFile("deliverableFiles.txt", deliverable);
+
+        // Add a listener to the Effort Category choice box
+        effortcategory.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            // Clear the deliverable choice box
+            deliverable.getItems().clear();
+
+            // Check the selected value and populate the deliverable choice box based on it
+            if ("Plans".equals(newValue)) {
+                // Load data from a specific file or add specific items
+                // For demonstration, just adding a single item
+            	loadDataFromFile("planFiles.txt", deliverable);
+            } else if ("Deliverables".equals(newValue)) {
+                // Add different items or load from a different file
+            	loadDataFromFile("deliverableFiles.txt", deliverable);
+            } else if("Interruptions".equals(newValue)) {
+            	loadDataFromFile("interruptionFiles.txt", deliverable);
+            } else if("Defects".equals(newValue)) {
+            	loadDataFromFile("defectCategoryFiles.txt", deliverable);
+            }
+            
+        });
+    }
 	
 	public void switchToEffortLoggerConsole(ActionEvent event) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("EffortLoggerConsole.fxml"));
@@ -47,14 +68,18 @@ public class PlanningPokerConsole {
 	}
 		
 	private void loadDataFromFile(String fileName, ChoiceBox<String> choiceBox) {
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-		    String line;
-		    while ((line = reader.readLine()) != null) {
-		    	choiceBox.getItems().add(line);
-		    }
-		} catch (IOException e) {
-		        e.printStackTrace();
-		  }
+	    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	            String[] parts = line.split("\\|");
+	            if (parts.length > 1) { // Check if there are at least two '|' characters
+	                String dataToDisplay = parts[1].trim(); // Extract the data between the first and second '|'
+	                choiceBox.getItems().add(dataToDisplay);
+	            }
+	        }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 	
 }
