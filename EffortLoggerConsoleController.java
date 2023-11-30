@@ -30,7 +30,8 @@ public class EffortLoggerConsoleController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-	
+	@FXML
+	private TextField other;
 	@FXML
 	private ChoiceBox<String> project;
 
@@ -151,17 +152,31 @@ public class EffortLoggerConsoleController {
 		startTime = LocalTime.now();
 	}
 	@FXML
-	void stop(ActionEvent event) throws IOException{
-		ClockLabelRectangle.setFill(Color.RED);//changes the clock is stopped label to red 
-		ClockLabel.setText("Clock is Stopped");//and the text is changed to the clock is stopped  
-		//when the stop the activity button is pressed.
-		// Write to file, append mode
-		stopTime = LocalTime.now(); //clock cycle
-		String selected = LocalDate.now().toString() +" (" + startTime.format(formatter) + "-" + stopTime.format(formatter)+")"+ project.getValue()+";"+lifecycle.getValue()+";"+effortcategory.getValue();
-        try (PrintWriter out = new PrintWriter(new FileWriter("out.txt", true))) {
-            out.println(selected);
-        }
-		}
+	void stop(ActionEvent event) throws IOException {
+	    ClockLabelRectangle.setFill(Color.RED); // Changes the clock is stopped label to red
+	    ClockLabel.setText("Clock is Stopped"); // Changes the text to clock is stopped
+
+	    stopTime = LocalTime.now(); // Clock cycle
+
+	    // Build the string with date, start time, and stop time
+	    String selected = LocalDate.now().toString() + " (" + startTime.format(formatter) + "-" + stopTime.format(formatter) + ")";
+
+	    // Add project, lifecycle, and effortcategory values
+	    selected += project.getValue() + ";" + lifecycle.getValue() + ";" + effortcategory.getValue();
+
+	    // Check if 'Others' is selected in the effortcategory and append text from 'other' TextField
+	    // Otherwise, append the selected deliverable
+	    if ("Others".equals(effortcategory.getValue())) {
+	        selected += ";" + (other.getText() != null ? other.getText() : "null");
+	    } else {
+	        selected += ";" + (deliverable.getValue() != null ? deliverable.getValue() : "null");
+	    }
+
+	    // Write to file, append mode
+	    try (PrintWriter out = new PrintWriter(new FileWriter("out.txt", true))) {
+	        out.println(selected);
+	    }
+	}
 
 	//Joel
 	private void loadDataFromFile(String fileName, ChoiceBox<String> choiceBox) {
